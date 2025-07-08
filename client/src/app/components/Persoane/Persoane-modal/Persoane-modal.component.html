@@ -1,0 +1,89 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    {{ id_persoana ? "Modificare" : "Adăugare" }} persoană
+  </h4>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <label class="col-2 control-label">Nume*</label>
+    <div class="col-9">
+      <input
+        type="text"
+        [(ngModel)]="modal.nume"
+        class="form-control"
+        placeholder="Nume..."
+        maxlength="255"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-2 control-label">Prenume*</label>
+    <div class="col-9">
+      <input
+        type="text"
+        [(ngModel)]="modal.prenume"
+        class="form-control"
+        placeholder="Prenume..."
+        maxlength="255"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-2 control-label">CNP*</label>
+    <div class="col-4">
+      <input
+        type="text"
+        [(ngModel)]="modal.cnp"
+        class="form-control"
+        placeholder="CNP..."
+        maxlength="13"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-2 control-label">Vârstă*</label>
+    <div class="col-4">
+      <input
+        type="text"
+        [(ngModel)]="modal.varsta"
+        class="form-control"
+        placeholder="Vârstă..."
+        maxlength="3"
+        readonly
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-2 control-label">Mașini*</label>
+    <div class="col-9">
+      <ng-select
+        [items]="listaMasini"
+        bindLabel="denumire"
+        bindValue="id"
+        [(ngModel)]="modal.masini"
+        [multiple]="true"
+        placeholder="Selectează mașini"
+        name="masini"
+      >
+      </ng-select>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.dismiss()"
+  >
+    Renunță
+  </button>
+  <button type="button" class="btn btn-success" (click)="save()">
+    Salvează
+  </button>
+</div>

@@ -1,0 +1,130 @@
+<div class="col-12 mt-2 width-1220">
+  <div class="row">
+    <div class="col-4">
+      <button class="btn btn-primary btn-sm" type="button" (click)="addEdit()">
+        <fa-icon [icon]="faPlus"></fa-icon> Adaugă
+      </button>
+    </div>
+    <div class="col-4">
+      <h4 class="text-center">Mașini</h4>
+    </div>
+    <div class="col-4"></div>
+  </div>
+
+  <div class="col-12 position-relative width-1220">
+    <div
+      id="view"
+      class="view-scroll-masini"
+      style="max-height: 60vh"
+      [scrollWindow]="false"
+      (scroll)="showTopButton()"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="30"
+      (scrolled)="onScrollDown()"
+    >
+      <button
+        type="button"
+        id="back-top"
+        class="{{ this.showBackTop }}"
+        (click)="onScrollTop()"
+      >
+        <fa-icon [icon]="faChevronUp"></fa-icon>
+      </button>
+
+      <table class="table table-hover table-striped table-bordered font-14 p-0">
+        <thead>
+          <tr class="table-bordered">
+            <th width="60px" rowspan="2">Nr. Crt.</th>
+            <th>Denumire marcă</th>
+            <th>Denumire model</th>
+            <th>An fabricație</th>
+            <th>Capacitate cilindrică</th>
+            <th>Taxă impozit</th>
+            <th rowspan="2" width="60px"></th>
+          </tr>
+          <tr>
+            <th>
+              <input
+                class="form-control input-xs"
+                placeholder="Căutare..."
+                [(ngModel)]="filterMarca"
+              />
+            </th>
+            <th>
+              <input
+                class="form-control input-xs"
+                placeholder="Căutare..."
+                [(ngModel)]="filterModel"
+              />
+            </th>
+            <th>
+              <input
+                class="form-control input-xs"
+                placeholder="Căutare..."
+                [(ngModel)]="filterAn"
+              />
+            </th>
+            <th>
+              <input
+                class="form-control input-xs"
+                placeholder="Căutare..."
+                [(ngModel)]="filterCc"
+              />
+            </th>
+            <th>
+              <input
+                class="form-control input-xs"
+                placeholder="Căutare..."
+                [(ngModel)]="filterTaxa"
+              />
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            *ngFor="let m of masiniFiltrate.slice(0, limit); let i = index"
+            (dblclick)="addEdit(m.id)"
+            class="cursor-pointer"
+          >
+            <td width="60px" class="text-center">{{ i + 1 }}</td>
+            <td>{{ m.marca }}</td>
+            <td>{{ m.model }}</td>
+            <td>{{ m.an_fabricatie }}</td>
+            <td>{{ m.capacitate_cilindrica }}</td>
+            <td>{{ m.taxa_impozit }}</td>
+            <td width="60px" class="text-center">
+              <fa-icon
+                class="text-primary"
+                [icon]="faEdit"
+                (click)="addEdit(m.id)"
+                matTooltip="Modificare"
+              ></fa-icon>
+              <span
+                style="
+                  display: inline-block;
+                  width: 2px;
+                  height: 16px;
+                  background: #ccc;
+                  margin: 0 4px;
+                  vertical-align: middle;
+                "
+              ></span>
+              <fa-icon
+                class="text-danger"
+                [icon]="faTrashAlt"
+                (click)="delete(m)"
+                matTooltip="Ștergere"
+              ></fa-icon>
+            </td>
+          </tr>
+
+          <tr colspan="15" *ngIf="!masini.length" class="text-center fw-bold">
+            <td>Date inexistente!</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

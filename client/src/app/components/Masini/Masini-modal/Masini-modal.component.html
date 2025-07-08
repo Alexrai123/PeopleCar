@@ -1,0 +1,84 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    {{ id_masina ? "Modificare" : "Adăugare" }} mașină
+  </h4>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <label class="col-3 control-label">Marcă*</label>
+    <div class="col-8">
+      <input
+        [(ngModel)]="modal.marca"
+        class="form-control"
+        placeholder="Marcă..."
+        maxlength="100"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-3 control-label">Model*</label>
+    <div class="col-8">
+      <input
+        [(ngModel)]="modal.model"
+        class="form-control"
+        placeholder="Model..."
+        maxlength="100"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-3 control-label">An fabricație*</label>
+    <div class="col-4">
+      <input
+        type="number"
+        [(ngModel)]="modal.an_fabricatie"
+        class="form-control"
+        placeholder="An..."
+        maxlength="4"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-3 control-label">Capacitate cilindrică*</label>
+    <div class="col-4">
+      <input
+        type="number"
+        [(ngModel)]="modal.capacitate_cilindrica"
+        class="form-control"
+        placeholder="Capacitate..."
+        maxlength="5"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-3 control-label">Taxa impozit*</label>
+    <div class="col-4">
+      <input
+        type="number"
+        [(ngModel)]="modal.taxa_impozit"
+        class="form-control"
+        placeholder="Taxă..."
+        maxlength="7"
+        readonly
+      />
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.dismiss()"
+  >
+    Renunță
+  </button>
+  <button type="button" class="btn btn-success" (click)="save()">
+    Salvează
+  </button>
+</div>
