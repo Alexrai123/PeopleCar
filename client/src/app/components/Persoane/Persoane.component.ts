@@ -19,7 +19,7 @@ interface Persoana {
   prenume: string;
   cnp: string;
   varsta: number;
-  masini: any[]; // poți defini și tipul aici dacă vrei
+  masini: any[];
 }
 
 @Component({

@@ -103,7 +103,6 @@ module.exports = (db) => {
 
     destroy: async (req, res) => {
       try {
-        // ștergere linie din Junction dacă nu ai ON DELETE CASCADE
         await db.Junction.destroy({ where: { id_person: req.params.id } });
         await db.Persoana.destroy({ where: { id: req.params.id } });
 
